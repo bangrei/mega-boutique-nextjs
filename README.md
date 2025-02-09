@@ -11,6 +11,8 @@ npm install @heroicons/react
 npm install react-icons
 # Image slider
 npm install swiper
+npm install @radix-ui/themes 
+npm install @radix-ui/react-dialog
 ```
 
 Second, run the development server:

@@ -7,8 +7,11 @@ import CategorySection from "@/components/CategorySection";
 import GroupCarousel from "@/components/GroupCarousel";
 import PageLayout from "@/components/PageLayout";
 import ShortInfo from "@/components/ShortInfo";
+import PopupModal from "@/components/PopupModal";
+import { useState } from "react";
 
 export default function Home() {
+  const [inited, setInited] = useState(false);
   return (
     <PageLayout>
       <div className="grid grid-cols-1 gap-8">
@@ -18,6 +21,11 @@ export default function Home() {
         <GroupCarousel />
         <Banner2x2 />
         <ShortInfo />
+        {!inited && (
+          <PopupModal title="Promotions" onClose={() => setInited(true)}>
+            <Banner2x2 />
+          </PopupModal>
+        )}
       </div>
     </PageLayout>
   );

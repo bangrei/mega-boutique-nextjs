@@ -22,6 +22,8 @@ export default {
       boxShadow: {
         center: "0 0 15px #93c5fd",
         "center-dark": "0 0 15px #3d3d3d",
+        "center-light": "0 0 20px #ececec",
+        badge: "0 0 15px #9ec152",
         "dark-top": "0 -2 15px #ccc",
         modal: "0 0 15px #ccc",
       },
