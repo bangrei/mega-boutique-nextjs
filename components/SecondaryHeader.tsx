@@ -41,7 +41,7 @@ const SecondaryHeader = () => {
             Shop By Category
           </span>
         </button>
-        <div className="flex-1 w-full items-center justify-between gap-8 lg:gap-16 flex">
+        <div className="flex-1 w-full items-center justify-start gap-8 lg:gap-10 flex">
           <div className="secondary-header-nav-item">
             <span className="secondary-header-nav-item-label">
               Shop By Brand

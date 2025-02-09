@@ -1,11 +1,20 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import CategoryCardShimmer from "./CategoryCardShimmer";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const CategorySection = () => {
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  const linkDetail = (category: any) => {
+    let name = category.name.split(" ").join("-").toLowerCase();
+    return `/${name}`;
+  };
 
   useEffect(() => {
     setCategories([
@@ -62,7 +71,11 @@ const CategorySection = () => {
         {categories.map((cat, i) => {
           return (
             <div key={i} className="flex gap-2 flex-col">
-              <div key={i} className="category-card group">
+              <Link
+                href={linkDetail(cat)}
+                key={i}
+                className="category-card group"
+              >
                 <Image
                   className="category-card-image"
                   src={cat.image}
@@ -70,7 +83,7 @@ const CategorySection = () => {
                   width={100}
                   height={100}
                 />
-              </div>
+              </Link>
               <span className="category-card-label">{cat.name}</span>
             </div>
           );

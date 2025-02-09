@@ -5,6 +5,7 @@ import {
   ChevronUpIcon,
   ChevronRightIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 interface Props {
   onClose: Function;
@@ -20,6 +21,12 @@ const CategoryModal = (props: Props) => {
   const _setParentIndex = (index: Number) => {
     if (parentIndex == index) setParentIndex(null);
     else setParentIndex(index);
+  };
+
+  const linkDetail = (link: String | null) => {
+    if (!link) return "/";
+    let name = link.split(" ").join("-").toLowerCase();
+    return `/${name}`;
   };
 
   const _close = () => {
@@ -501,7 +508,9 @@ const CategoryModal = (props: Props) => {
                                           key={si}
                                         >
                                           <div className="w-1 h-1 bg-slate-600 rounded-full"></div>
-                                          <span>{subitem}</span>
+                                          <Link href={linkDetail(subitem)}>
+                                            {subitem}
+                                          </Link>
                                         </div>
                                       );
                                     })}
@@ -533,7 +542,9 @@ const CategoryModal = (props: Props) => {
                                           key={si}
                                         >
                                           <div className="w-1 h-1 bg-slate-600 rounded-full"></div>
-                                          <span>{subitem}</span>
+                                          <Link href={linkDetail(subitem)}>
+                                            {subitem}
+                                          </Link>
                                         </div>
                                       );
                                     })}
@@ -543,19 +554,39 @@ const CategoryModal = (props: Props) => {
                             })}
                         </div>
                       </div>
-                      <div className="lg:flex-[3] flex-col gap-2 w-full h-full lg:overflow-hidden lg:overflow-y-auto whitespace-nowrap border-l border-l-slate-300/50 pl-4 hidden lg:flex">
+                      <div className="lg:flex-[2] flex-col gap-2 w-full h-full lg:overflow-hidden lg:overflow-y-auto whitespace-nowrap pl-4 hidden lg:flex">
                         <div className="font-bold">Brands</div>
-                        <div className="flex flex-col gap-2">
-                          {brands.map((brand, i) => {
-                            return (
-                              <div
-                                className="cursor-pointer hover:text-primary"
-                                key={i}
-                              >
-                                {brand}
-                              </div>
-                            );
-                          })}
+                        <div className="w-full flex gap-4">
+                          <div className="flex flex-col gap-2">
+                            {brands
+                              .filter((_, bx) => bx % 2 === 0)
+                              .map((brand, i) => {
+                                return (
+                                  <div
+                                    className="cursor-pointer hover:text-primary"
+                                    key={i}
+                                  >
+                                    {brand}
+                                  </div>
+                                );
+                              })}
+                          </div>
+                          {brands.filter((_, bx) => bx % 2 != 0) && (
+                            <div className="flex flex-col gap-2">
+                              {brands
+                                .filter((_, bx) => bx % 2 != 0)
+                                .map((brand, i) => {
+                                  return (
+                                    <div
+                                      className="cursor-pointer hover:text-primary"
+                                      key={i}
+                                    >
+                                      {brand}
+                                    </div>
+                                  );
+                                })}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -563,6 +594,9 @@ const CategoryModal = (props: Props) => {
                 </div>
               );
             })}
+            <div className="flex-1">
+              <div className="category-item-nav"></div>
+            </div>
           </div>
           <div className="w-full flex flex-col gap-4 mt-auto px-8 pt-4 pb-8 lg:hidden bg-secondary-light text-white">
             <div className="w-full flex items-center justify-between">

@@ -1,8 +1,14 @@
-import Image from "next/image";
+"use client";
 
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 const MainLogo = () => {
+  const router = useRouter();
   return (
-    <div className="flex items-center gap-4 cursor-pointer">
+    <div
+      onClick={() => router.push("/")}
+      className="flex items-center gap-4 cursor-pointer"
+    >
       <Image
         className="object-contain lg:min-h-16"
         src="/assets/mega-logo.png"
