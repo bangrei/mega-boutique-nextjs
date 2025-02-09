@@ -24,7 +24,7 @@ export default function PageLayout(props: Props) {
         <FootLinks />
         <div className="w-full p-4 md:px-[7%] flex flex-col items-center lg:flex-row lg:items-end justify-between gap-4 bg-slate-600 text-white">
           <div className="flex-1 flex flex-col items-center lg:items-start">
-            <span>
+            <span className="text-center lg:text-left">
               Unit 4/450 Princes Hwy, Noble Park VIC 3174 Australia | 03 8524
               7870
             </span>
