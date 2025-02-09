@@ -36,7 +36,7 @@ export default function PageLayout(props: Props) {
               <span className="hover:text-primary cursor-pointer">Contact</span>
             </div>
           </div>
-          <div className="flex-1 text-end">
+          <div className="flex-1 text-center md:text-end">
             All transactions are secured with SSL encryption (HTTPS).
           </div>
         </div>
