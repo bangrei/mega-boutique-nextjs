@@ -16,11 +16,14 @@ const CategoryModal = (props: Props) => {
   const [categories, setCategories] = useState<Category[] | []>([]);
   const [brands, setBrands] = useState<String[] | []>([]);
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const [parentIndex, setParentIndex] = useState<Number | null>(null);
+  const [parentIndex, setParentIndex] = useState<Number | null>(0);
 
   const _setParentIndex = (index: Number) => {
+    /*
     if (parentIndex == index) setParentIndex(null);
     else setParentIndex(index);
+    */
+    setParentIndex(index);
   };
 
   const linkDetail = (link: String | null) => {
@@ -467,7 +470,12 @@ const CategoryModal = (props: Props) => {
           <div className="category-wrapper">
             {categories.map((c, i) => {
               return (
-                <div className="category-item group" key={i}>
+                <div
+                  className={`category-item group ${
+                    i == parentIndex ? "active" : ""
+                  }`}
+                  key={i}
+                >
                   <div
                     className="category-item-nav"
                     onClick={() => _setParentIndex(i)}

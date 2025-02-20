@@ -160,19 +160,23 @@ body {
 .category-item-nav {
   @apply flex-1 cursor-pointer flex items-center justify-between px-8 h-16 py-4;
   @apply transition-all duration-300;
-  @apply group-hover:lg:border-b-transparent group-hover:text-primary border-t-transparent group-hover:border-t-slate-300/50;
-  @apply group-hover:bg-red-50/15;
+  @apply group-hover:text-primary border-t-transparent;
   @apply lg:py-0 lg:px-6 lg:whitespace-nowrap lg:border-t-transparent lg:text-center;
   @apply lg:border-b lg:border-b-slate-300/50 lg:border-x lg:border-x-transparent;
-  @apply group-hover:lg:border-x-slate-300/50;
   
 }
+.category-item.active .category-item-nav {
+  @apply lg:border-b-transparent text-primary border-t-slate-300/50;
+  @apply lg:border-x-slate-300/50 bg-red-50/15;
+}
 .category-content {
-  @apply hidden w-full flex-1;
-  @apply group-hover:top-0 group-hover:h-full;
-  @apply group-hover:lg:absolute lg:top-0 lg:bottom-0;
-  @apply group-hover:flex group-hover:bg-red-50/15;
-  @apply group-hover:lg:flex group-hover:lg:left-0 group-hover:lg:top-24;
+  @apply hidden w-full flex-1 lg:top-0 lg:bottom-0;
+}
+.category-item.active .category-content {
+  @apply top-0 h-full;
+  @apply lg:absolute;
+  @apply flex bg-red-50/15;
+  @apply lg:flex lg:left-0 lg:top-24;
 }
 .category-main {
   @apply w-full flex-1 flex;
@@ -222,7 +226,7 @@ body {
 
 .slide-prev,
 .slide-next {
-  @apply cursor-pointer p-2 flex items-center justify-center border border-slate-400;
+  @apply cursor-pointer p-2 hidden md:flex items-center justify-center border border-slate-400;
 }
 .swiper-pagination-bullet {
   @apply transition-all duration-300;
@@ -234,7 +238,7 @@ body {
 }
 
 .help-button {
-  @apply fixed cursor-pointer z-[3] right-4 bottom-4 rounded-full px-5 py-2;
+  @apply fixed cursor-pointer z-[3] right-4 bottom-4 rounded-full px-2 md:px-5 py-2;
   @apply flex items-center gap-3 bg-sky-600 w-fit;
   @apply hover:bg-blue-600;
 }
